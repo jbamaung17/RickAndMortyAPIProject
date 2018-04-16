@@ -64,17 +64,51 @@ const populateCharactersSelector = function(characters){
 // create listed item
 const showCharacterInfo = function(event){
   const indexNumber = event.target.selectedIndex;
+  let character = window.characters.results[indexNumber-1];
   var characterDiv = document.querySelector('#character-div');
-  
+  var list = document.createElement('ul');
+  var li = createCharacterItem(character);
+  list.appendChild(li);
+
+  characterDiv.appendChild(list);
 }
 
 
 // create character item
+const createCharacterItem = function(character){
+  var ul = document.createElement('ul');
+  var li = document.createElement('li');
+    li.innerText = "Name: " + character.name;
+    ul.appendChild(li);
+  var li2 = document.createElement('li');
+    li2.innerText = "Planet of Origin: " + character.origin.name;
+    ul.appendChild(li2);
+  var li3 =document.createElement('li');
+    li3.innerText = "Last Known Location: " + character.location.name;
+    ul.appendChild(li3);
+  var li4 = document.createElement('li');
+    li4.innerText = "Status: " + character.status;
+    ul.appendChild(li4);
+    var img = createCharacterImage(character);
+    ul.appendChild(img);
+
+    return ul;}
 
 
+// create character image
+const createCharacterImage = function(character){
+  var image = document.createElement('img');
+  image.src = character.image;
+  image.alt = character.name;
+  return image;
+}
 
-
-
+// get character location
+const getCharacterLocation = function(character){
+  var location = document.createElement('ul');
+  location.innerText = character.location;
+  return location;
+}
 
 // populate location selector
 const populateLocationSelector = function(locations){
