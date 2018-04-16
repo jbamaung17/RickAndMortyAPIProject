@@ -50,6 +50,7 @@ populateLocationSelector(locations);
 
 };
 
+
 // populate character selector
 const populateCharactersSelector = function(characters){
 
@@ -63,8 +64,10 @@ const populateCharactersSelector = function(characters){
 
     select.appendChild(option);
 
+
   })
 }
+
 
 // create listed item
 const showCharacterInfo = function(event){
@@ -172,18 +175,13 @@ const populateEpisodeSelector = function(episodes){
 const showEpisodeInfo = function(event){
   const indexNumber = event.target.selectedIndex;
 
-  var location = window.locations.results[indexNumber-1];
+  var episode = window.episodes.results[indexNumber-1];
 
-  var characterDiv = document.querySelector('#location-div');
+  var episodeDiv = document.querySelector('#episode-div');
 
-  var list = document.createElement('ul');
-
-  var li = createLocationItem(location);
-
-  list.appendChild(li);
-
-  locationDiv.appendChild(list);
+  episodeDiv.innerText = episode.name;
 }
+
 
 // show location info
 const showLocationInfo = function(event){
