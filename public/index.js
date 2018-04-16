@@ -24,7 +24,7 @@ characters = JSON.parse(jsonString);
 
 populateCharactersSelector(characters);
 
-};
+}
 
 // episode request complete
 const episodeRequestComplete = function(){
@@ -52,10 +52,15 @@ populateLocationSelector(locations);
 
 // populate character selector
 const populateCharactersSelector = function(characters){
+
   const select = document.querySelector('select');
+
   characters.results.forEach(function(character){
+
     const option = document.createElement("option");
+
     option.innerText = character.name;
+
     select.appendChild(option);
 
   })
@@ -63,11 +68,17 @@ const populateCharactersSelector = function(characters){
 
 // create listed item
 const showCharacterInfo = function(event){
+
   const indexNumber = event.target.selectedIndex;
+
   let character = window.characters.results[indexNumber-1];
-  var characterDiv = document.querySelector('#character-div');
-  var list = document.createElement('ul');
-  var li = createCharacterItem(character);
+
+  const characterDiv = document.querySelector('#character-div');
+
+  const list = document.createElement('ul');
+
+  let li = createCharacterItem(character);
+
   list.appendChild(li);
 
   characterDiv.appendChild(list);
@@ -77,19 +88,24 @@ const showCharacterInfo = function(event){
 // create character item
 const createCharacterItem = function(character){
   var ul = document.createElement('ul');
+
   var li = document.createElement('li');
     li.innerText = "Name: " + character.name;
     ul.appendChild(li);
+
   var li2 = document.createElement('li');
     li2.innerText = "Planet of Origin: " + character.origin.name;
     ul.appendChild(li2);
+
   var li3 =document.createElement('li');
     li3.innerText = "Last Known Location: " + character.location.name;
     ul.appendChild(li3);
+
   var li4 = document.createElement('li');
     li4.innerText = "Status: " + character.status;
     ul.appendChild(li4);
-    var img = createCharacterImage(character);
+
+  var img = createCharacterImage(character);
     ul.appendChild(img);
 
     return ul;}
@@ -113,12 +129,31 @@ const getCharacterLocation = function(character){
 // populate location selector
 const populateLocationSelector = function(locations){
   const select = document.querySelector('#locationselector');
+
   locations.results.forEach(function(location){
     const option = document.createElement("option");
     option.innerText = location.name;
     select.appendChild(option);
-
   })
+}
+
+// create location item
+const createLocationItem = function(location){
+  const ul = document.createElement('ul');
+
+  const li = document.createElement('li');
+  li.innerText = "Name: " + location.name;
+  ul.appendChild(li);
+
+  const li2 = document.createElement('li');
+  li2.innerText = "Dimension: " + location.dimension;
+  ul.appendChild(li2);
+
+  const li3 = document.createElement('li');
+  li3.innerText = "Type: " + location.type;
+  ul.appendChild(li3);
+
+  return ul;
 }
 
 
@@ -136,49 +171,78 @@ const populateEpisodeSelector = function(episodes){
 // show episode info
 const showEpisodeInfo = function(event){
   const indexNumber = event.target.selectedIndex;
-  var pTag = document.querySelector('#episode-info');
-  pTag.innerText = "this is working"
+
+  var location = window.locations.results[indexNumber-1];
+
+  var characterDiv = document.querySelector('#location-div');
+
+  var list = document.createElement('ul');
+
+  var li = createLocationItem(location);
+
+  list.appendChild(li);
+
+  locationDiv.appendChild(list);
 }
 
 // show location info
 const showLocationInfo = function(event){
   const indexNumber = event.target.selectedIndex;
-  var pTag = document.querySelector('#location-info');
-  pTag.innerText = "this is working"
+
+  var location = window.locations.results[indexNumber-1];
+
+  var locationDiv = document.querySelector('#location-div');
+
+  var list = document.createElement('ul');
+
+  var li = createLocationItem(location);
+
+  list.appendChild(li);
+
+  locationDiv.appendChild(list);
 }
 
 //run app
 const app = function(){
   const url1 = "https://rickandmortyapi.com/api/character/?page=1";
-  const url11 = "https://rickandmortyapi.com/api/character/?page=2";
-  const url12 = "https://rickandmortyapi.com/api/character/?page=3";
-  const url13 = "https://rickandmortyapi.com/api/character/?page=4";
-  const url14 = "https://rickandmortyapi.com/api/character/?page=5";
-  const url15 = "https://rickandmortyapi.com/api/character/?page=6";
-  const url16 = "https://rickandmortyapi.com/api/character/?page=7";
-  const url17 = "https://rickandmortyapi.com/api/character/?page=8";
-  const url18 = "https://rickandmortyapi.com/api/character/?page=9";
-  const url19 = "https://rickandmortyapi.com/api/character/?page=10";
-  const url101 = "https://rickandmortyapi.com/api/character/?page=11";
-  const url102 = "https://rickandmortyapi.com/api/character/?page=12";
-  const url103 = "https://rickandmortyapi.com/api/character/?page=13";
-  const url104 = "https://rickandmortyapi.com/api/character/?page=14";
-  const url105 = "https://rickandmortyapi.com/api/character/?page=15";
-  const url106 = "https://rickandmortyapi.com/api/character/?page=16";
-  const url107 = "https://rickandmortyapi.com/api/character/?page=17";
-  const url108 = "https://rickandmortyapi.com/api/character/?page=18";
-  const url109 = "https://rickandmortyapi.com/api/character/?page=19";
-  const url110 = "https://rickandmortyapi.com/api/character/?page20";
+  const url2 = "https://rickandmortyapi.com/api/character/?page=2";
+  const url3 = "https://rickandmortyapi.com/api/character/?page=3";
+  const url4 = "https://rickandmortyapi.com/api/character/?page=4";
+  const url5 = "https://rickandmortyapi.com/api/character/?page=5";
+  const url6 = "https://rickandmortyapi.com/api/character/?page=6";
+  const url7 = "https://rickandmortyapi.com/api/character/?page=7";
+  const url8 = "https://rickandmortyapi.com/api/character/?page=8";
+  const url9 = "https://rickandmortyapi.com/api/character/?page=9";
+  const url10 = "https://rickandmortyapi.com/api/character/?page=10";
+  const url11 = "https://rickandmortyapi.com/api/character/?page=11";
+  const url12 = "https://rickandmortyapi.com/api/character/?page=12";
+  const url13 = "https://rickandmortyapi.com/api/character/?page=13";
+  const url14 = "https://rickandmortyapi.com/api/character/?page=14";
+  const url15 = "https://rickandmortyapi.com/api/character/?page=15";
+  const url16 = "https://rickandmortyapi.com/api/character/?page=16";
+  const url17 = "https://rickandmortyapi.com/api/character/?page=17";
+  const url18 = "https://rickandmortyapi.com/api/character/?page=18";
+  const url19 = "https://rickandmortyapi.com/api/character/?page=19";
+  const url20 = "https://rickandmortyapi.com/api/character/?page20";
 
-  const url2 = "https://rickandmortyapi.com/api/episode/?page=1";
-  const url21 = "https://rickandmortyapi.com/api/episode/?page=2";
+  const url21 = "https://rickandmortyapi.com/api/episode/?page=1";
+  const url22 = "https://rickandmortyapi.com/api/episode/?page=2";
 
-  const url3 = "https://rickandmortyapi.com/api/location/?page=1";
-  const url31 = "https://rickandmortyapi.com/api/location/?page=2";
-  const url32 = "https://rickandmortyapi.com/api/location/?page=3";
-  const url33 = "https://rickandmortyapi.com/api/location/?page=4";
+  const url23 = "https://rickandmortyapi.com/api/location/?page=1";
+  const url24 = "https://rickandmortyapi.com/api/location/?page=2";
+  const url25 = "https://rickandmortyapi.com/api/location/?page=3";
+  const url26 = "https://rickandmortyapi.com/api/location/?page=4";
 
 makeRequest(url1, characterRequestComplete);
+makeRequest(url2, characterRequestComplete);
+makeRequest(url3, characterRequestComplete);
+makeRequest(url4, characterRequestComplete);
+makeRequest(url5, characterRequestComplete);
+makeRequest(url6, characterRequestComplete);
+makeRequest(url7, characterRequestComplete);
+makeRequest(url8, characterRequestComplete);
+makeRequest(url9, characterRequestComplete);
+makeRequest(url10, characterRequestComplete);
 makeRequest(url11, characterRequestComplete);
 makeRequest(url12, characterRequestComplete);
 makeRequest(url13, characterRequestComplete);
@@ -188,26 +252,17 @@ makeRequest(url16, characterRequestComplete);
 makeRequest(url17, characterRequestComplete);
 makeRequest(url18, characterRequestComplete);
 makeRequest(url19, characterRequestComplete);
-makeRequest(url101, characterRequestComplete);
-makeRequest(url102, characterRequestComplete);
-makeRequest(url103, characterRequestComplete);
-makeRequest(url104, characterRequestComplete);
-makeRequest(url105, characterRequestComplete);
-makeRequest(url106, characterRequestComplete);
-makeRequest(url107, characterRequestComplete);
-makeRequest(url108, characterRequestComplete);
-makeRequest(url109, characterRequestComplete);
-makeRequest(url110, characterRequestComplete);
+makeRequest(url20, characterRequestComplete);
 
-makeRequest(url2, episodeRequestComplete);
 makeRequest(url21, episodeRequestComplete);
+makeRequest(url22, episodeRequestComplete);
 
 
 
-makeRequest(url3, locationRequestComplete);
-makeRequest(url31, locationRequestComplete);
-makeRequest(url32, locationRequestComplete);
-makeRequest(url33, locationRequestComplete);
+makeRequest(url23, locationRequestComplete);
+makeRequest(url24, locationRequestComplete);
+makeRequest(url25, locationRequestComplete);
+makeRequest(url26, locationRequestComplete);
 
 
 
